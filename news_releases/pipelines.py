@@ -9,8 +9,8 @@ import json
 import io
 
 class JsonPipeline(object):
-    def __init__(self):
-        self.file = io.open('news_releases.json', 'a', encoding='utf-8')
+    def open_spider(self, spider):
+        self.file = io.open("news_releases/results/" + spider.name + '.json', 'w', encoding='utf-8')
 
     def process_item(self, item, spider):
         line = json.dumps(dict(item), ensure_ascii=False) + "\n"
