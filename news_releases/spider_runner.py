@@ -7,9 +7,10 @@ from scrapy.conf import settings
 from scrapy.utils.project import get_project_settings
 from spiders.whitehouse_statements import WhitehouseStatementsSpider
 from spiders.whitehouse_youtube import WhitehouseYoutubeSpider
+from spiders.donaldjtrump import DonaldjtrumpSpider
 
 SPIDER_LIST = [
-    WhitehouseStatementsSpider, WhitehouseYoutubeSpider
+    WhitehouseStatementsSpider, WhitehouseYoutubeSpider, DonaldjtrumpSpider
 ]
 
 if __name__ == "__main__":
