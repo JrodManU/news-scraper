@@ -11,9 +11,9 @@ class WhitehouseStatementsSpider(scrapy.Spider):
 
     def parse(self, response):
         items = []
-        for statement in response.css('div.views-field-title h3.field-content a'):
+        for element in response.css('div.views-field-title h3.field-content a'):
             item = NewsRelease()
-            item['title'] = statement.css('::text').extract_first()
-            item['link'] = "https://www.whitehouse.gov" + statement.css('::attr(href)').extract_first()
+            item['title'] = element.css('::text').extract_first()
+            item['link'] = "https://www.whitehouse.gov" + element.css('::attr(href)').extract_first()
             items.append(item)
         return items

@@ -8,9 +8,9 @@ class DonaldjtrumpSpider(scrapy.Spider):
 
     def parse(self, response):
         items = []
-        for statement in response.css('article.press-post h3 a'):
+        for element in response.css('article.press-post h3 a'):
             item = NewsRelease()
-            item['title'] = statement.css('::text').extract_first()
-            item['link'] = "https://www.donaldjtrump.com" + statement.css('::attr(href)').extract_first()
+            item['title'] = element.css('::text').extract_first()
+            item['link'] = "https://www.donaldjtrump.com" + element.css('::attr(href)').extract_first()
             items.append(item)
         return items

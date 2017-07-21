@@ -8,9 +8,9 @@ class WhitehouseYoutubeSpider(scrapy.Spider):
 
     def parse(self, response):
         items = []
-        for statement in response.css('h3.yt-lockup-title a.yt-uix-tile-link'):
+        for element in response.css('h3.yt-lockup-title a.yt-uix-tile-link'):
             item = NewsRelease()
-            item['title'] = statement.css('::text').extract_first()
-            item['link'] = "https://www.youtube.com" + statement.css('::attr(href)').extract_first()
+            item['title'] = element.css('::text').extract_first()
+            item['link'] = "https://www.youtube.com" + element.css('::attr(href)').extract_first()
             items.append(item)
         return items
