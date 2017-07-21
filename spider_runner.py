@@ -5,10 +5,10 @@ import traceback
 from scrapy.crawler import CrawlerProcess
 from scrapy.conf import settings
 from scrapy.utils.project import get_project_settings
-from spiders.whitehouse_statements import WhitehouseStatementsSpider
-from spiders.whitehouse_youtube import WhitehouseYoutubeSpider
-from spiders.donaldjtrump import DonaldjtrumpSpider
-from spiders.twitter import TwitterSpider
+from news_releases.spiders.whitehouse_statements import WhitehouseStatementsSpider
+from news_releases.spiders.whitehouse_youtube import WhitehouseYoutubeSpider
+from news_releases.spiders.donaldjtrump import DonaldjtrumpSpider
+from news_releases.spiders.twitter import TwitterSpider
 
 SPIDER_LIST = [
     WhitehouseStatementsSpider, WhitehouseYoutubeSpider, DonaldjtrumpSpider, TwitterSpider

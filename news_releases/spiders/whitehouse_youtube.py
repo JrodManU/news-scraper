@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
-from items import NewsRelease
+from news_releases.items import NewsRelease
 
 class WhitehouseYoutubeSpider(scrapy.Spider):
     name = 'whitehouse_youtube'
