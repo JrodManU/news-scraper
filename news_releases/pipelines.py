@@ -7,15 +7,18 @@
 
 import json
 import io
+import pdb
 
 class JsonPipeline(object):
+
     def open_spider(self, spider):
-        self.file = io.open("news_releases/results/" + spider.name + '.json', 'w', encoding='utf-8')
+        self.file = io.open("news_releases/results/" + spider.name + '.json', 'r+', encoding='utf-8')
+        self.items = []
 
     def process_item(self, item, spider):
-        line = json.dumps(dict(item), ensure_ascii=False) + "\n"
-        self.file.write(line)
+        self.items.append(dict(item))
         return item
 
     def close_spider(self, spider):
+        self.file.write(json.dumps(self.items, ensure_ascii=False))
         self.file.close()
