@@ -41,7 +41,6 @@ class SpiderRunner():
 #TODO: move this to a different file maybe? it also needs spider list as of rn
 spider_runner = SpiderRunner()
 start_time = time.time()
-
 while True:
     previous_data = spider_runner.get_data()
     spider_runner.run_spiders()
@@ -55,3 +54,5 @@ while True:
 
     for link in data_to_post:
         #post to reddit
+    #every 10 mintues
+    time.sleep(600.0 - ((time.time() - start_time) % 600.0)))
