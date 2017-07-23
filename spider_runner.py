@@ -13,6 +13,7 @@ import pdb
 import io
 import json
 import time
+import logging
 
 SPIDER_LIST = [
     WhitehouseStatementsSpider, WhitehouseYoutubeSpider, DonaldjtrumpSpider, TwitterSpider
@@ -42,6 +43,7 @@ class SpiderRunner():
 spider_runner = SpiderRunner()
 start_time = time.time()
 while True:
+    pdb.set_trace()
     previous_data = spider_runner.get_data()
     spider_runner.run_spiders()
     new_data = spider_runner.get_data()
@@ -53,6 +55,5 @@ while True:
                 data_to_post.append(link)
 
     for link in data_to_post:
-        #post to reddit
-    #every 10 mintues
-    time.sleep(600.0 - ((time.time() - start_time) % 600.0)))
+        logging.info("posting " + link['title'])
+    time.sleep(5.0 - ((time.time() - start_time) % 5.0))
