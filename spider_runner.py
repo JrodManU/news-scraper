@@ -18,7 +18,7 @@ import logging
 SPIDER_LIST = [
     WhitehouseStatementsSpider, WhitehouseYoutubeSpider, DonaldjtrumpSpider, TwitterSpider
 ]
-class OldSpiderRunner():
+class SpiderRunner():
     def run_spiders(self):
         try:
             ## set up the crawler and start to crawl one spider at a time
@@ -50,6 +50,5 @@ for spider in SPIDER_LIST:
     for link in new_data[spider.name]:
         if link not in previous_data[spider.name]:
             data_to_post.append(link)
-pdb.set_trace()
 for link in data_to_post:
     logging.info("posting " + link['title'])
