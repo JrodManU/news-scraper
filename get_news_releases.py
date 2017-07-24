@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from news_releases.spider_runner import SpiderRunner
 import logging
+import praw
 
 spider_runner = SpiderRunner()
 previous_data = spider_runner.get_data()

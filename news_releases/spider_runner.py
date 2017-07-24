@@ -11,6 +11,7 @@ from spiders.twitter import TwitterSpider
 
 import io
 import json
+import pdb
 
 class SpiderRunner():
     def __init__(self):
@@ -33,8 +34,15 @@ class SpiderRunner():
     def get_data(self):
         data = {}
         for spider in self.SPIDER_LIST:
-            data_file = io.open("news_releases/results/" + spider.name + '.json', 'r+', encoding='utf-8')
-            data[spider.name] = json.loads(data_file.readline())
+            data_file = None
+            data[spider.name] = []
+            try:
+                data_file = io.open("news_releases/results/" + spider.name + '.json', 'r', encoding='utf-8')
+                line = data_file.readline()
+                if not line == u'':
+                    data[spider.name] = json.loads(line)
+            except Exception:
+                data_file = io.open("news_releases/results/" + spider.name + '.json', 'w', encoding='utf-8')
             data_file.close()
         return data
 
