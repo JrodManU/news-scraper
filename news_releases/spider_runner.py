@@ -12,6 +12,12 @@ from spiders.dhs_gov import DHSGovSpider
 from spiders.commerce_gov import CommerceGovSpider
 from spiders.defense_gov import DefenseGovSpider
 from spiders.education_gov import EducationGovSpider
+from spiders.usda_gov import USDAGovSpider
+from spiders.energy_gov import EnergyGovSpider
+from spiders.hhs_gov_news import HHSGovNewsSpider
+from spiders.hhs_gov_blog import HHSGovBlogSpider
+from spiders.state_gov import StateGovSpider
+from spiders.state_gov_briefings import StateGovBriefingsSpider
 
 import io
 import json
@@ -20,7 +26,8 @@ class SpiderRunner():
     def __init__(self):
         self.SPIDER_LIST = [
             WhitehouseStatementsSpider, WhitehouseYoutubeSpider, DonaldjtrumpSpider, TwitterSpider, DHSGovSpider,
-            CommerceGovSpider, DefenseGovSpider, EducationGovSpider
+            CommerceGovSpider, DefenseGovSpider, EducationGovSpider, USDAGovSpider, EnergyGovSpider, HHSGovNewsSpider,
+            HHSGovBlogSpider, StateGovSpider, StateGovBriefingsSpider
         ]
 
     def run_spiders(self):
