@@ -8,7 +8,7 @@ class DonaldjtrumpSpider(scrapy.Spider):
 
     def parse(self, response):
         items = []
-        for element in response.css('article.press-post h3 a'):
+        for element in response.css('article.press-post h3 a')[:self.settings.attributes['SCRAPE_LIMIT'].value]:
             item = NewsRelease()
             item['title'] = element.css('::text').extract_first()
             item['link'] = "https://www.donaldjtrump.com" + element.css('::attr(href)').extract_first()

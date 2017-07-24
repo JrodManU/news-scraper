@@ -9,7 +9,7 @@ class DHSGovSpider(scrapy.Spider):
 
     def parse(self, response):
         items = []
-        for element in response.css('div.view-news-releases-updated div.view-content div.views-row div span a'):
+        for element in response.css('div.view-news-releases-updated div.view-content div.views-row div span a')[:self.settings.attributes['SCRAPE_LIMIT'].value]:
             item = NewsRelease()
             item['title'] = element.css('::text').extract_first()
             item['link'] = "https://www.dhs.gov" + element.css('::attr(href)').extract_first()

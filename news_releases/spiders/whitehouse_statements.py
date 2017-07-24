@@ -11,7 +11,7 @@ class WhitehouseStatementsSpider(scrapy.Spider):
 
     def parse(self, response):
         items = []
-        for element in response.css('div.views-field-title h3.field-content a'):
+        for element in response.css('div.views-field-title h3.field-content a')[:self.settings.attributes['SCRAPE_LIMIT'].value]:
             item = NewsRelease()
             item['title'] = element.css('::text').extract_first()
             item['link'] = "https://www.whitehouse.gov" + element.css('::attr(href)').extract_first()

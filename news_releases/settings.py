@@ -9,6 +9,8 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
+SCRAPE_LIMIT = 3
+
 BOT_NAME = 'news_releases'
 
 SPIDER_MODULES = ['news_releases.spiders']

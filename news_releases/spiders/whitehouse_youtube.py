@@ -8,7 +8,7 @@ class WhitehouseYoutubeSpider(scrapy.Spider):
 
     def parse(self, response):
         items = []
-        for element in response.css('h3.yt-lockup-title a.yt-uix-tile-link'):
+        for element in response.css('h3.yt-lockup-title a.yt-uix-tile-link')[:self.settings.attributes['SCRAPE_LIMIT'].value]:
             item = NewsRelease()
             item['title'] = element.css('::text').extract_first()
             item['link'] = "https://www.youtube.com" + element.css('::attr(href)').extract_first()

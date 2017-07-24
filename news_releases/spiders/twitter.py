@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from news_releases.items import NewsRelease
-import pdb
 
 class TwitterSpider(scrapy.Spider):
     name = 'twitter'
@@ -11,7 +10,7 @@ class TwitterSpider(scrapy.Spider):
 
     def parse(self, response):
         items = []
-        for element in response.css('ol#stream-items-id li div.tweet'):
+        for element in response.css('ol#stream-items-id li div.tweet')[:self.settings.attributes['SCRAPE_LIMIT'].value]:
             item = NewsRelease()
             text = element.css('div.content div.js-tweet-text-container ::text').extract()
             good_text = ""
