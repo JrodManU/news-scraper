@@ -2,6 +2,7 @@
 from news_releases.spider_runner import SpiderRunner
 import logging
 import praw
+import sys
 
 spider_runner = SpiderRunner()
 previous_data = spider_runner.get_data()
@@ -14,7 +15,11 @@ for spider in spider_runner.get_spider_list():
         if link not in previous_data[spider.name]:
             data_to_post.append(link)
 
-if len(data_to_post) > 0:
+post_data = True
+if len(sys.argv) > 1:
+    post_data = sys.argv[1].lower() == 'true'
+
+if post_data and len(data_to_post) > 0:
     reddit = praw.Reddit('bot')
     for link in data_to_post:
         reddit.subreddit("trump").submit(link["title"], url=link["link"])
