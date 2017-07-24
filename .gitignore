@@ -1,4 +1,4 @@
 news_releases.json
-/results/*
+results/*
 
-!/results/.gitkeep
+!results/.gitkeep
