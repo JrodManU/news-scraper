@@ -11,7 +11,6 @@ from spiders.twitter import TwitterSpider
 
 import io
 import json
-import pdb
 
 class SpiderRunner():
     def __init__(self):

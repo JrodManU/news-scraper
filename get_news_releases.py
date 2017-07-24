@@ -13,5 +13,8 @@ for spider in spider_runner.get_spider_list():
     for link in new_data[spider.name]:
         if link not in previous_data[spider.name]:
             data_to_post.append(link)
-for link in data_to_post:
-    logging.info("posting " + link['title'])
+
+if len(data_to_post) > 0:
+    reddit = praw.Reddit('bot')
+    for link in data_to_post:
+        reddit.subreddit("trump").submit(link["title"], url=link["link"])
