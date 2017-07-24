@@ -25,6 +25,13 @@ from spiders.dol_gov_blog import DOLGovBlogSpider
 from spiders.transportation_gov import TransportationGovSpider
 from spiders.transportation_gov_blog import TransportationGovBlogSpider
 from spiders.va_gov import VAGovSpider
+from spiders.doi_gov import DOIGovSpider
+from spiders.treasury_gov import TreasuryGovSpider
+from spiders.cia_gov import CIAGovSpider
+from spiders.epa_gov import EPAGovSpider
+from spiders.dni_gov import DNIGovSpider
+from spiders.sba_gov import SBAGovSpider
+from spiders.sec_gov import SECGovSpider
 
 import io
 import json
@@ -35,7 +42,8 @@ class SpiderRunner():
             WhitehouseStatementsSpider, WhitehouseYoutubeSpider, DonaldjtrumpSpider, TwitterSpider, DHSGovSpider,
             CommerceGovSpider, DefenseGovSpider, EducationGovSpider, USDAGovSpider, EnergyGovSpider, HHSGovNewsSpider,
             HHSGovBlogSpider, StateGovSpider, StateGovBriefingsSpider, HUDGovSpider, JusticeGovSpider, DOLGovSpider,
-            DOLGovBlogSpider, TransportationGovSpider, TransportationGovBlogSpider, VAGovSpider
+            DOLGovBlogSpider, TransportationGovSpider, TransportationGovBlogSpider, VAGovSpider, DOIGovSpider,
+            TreasuryGovSpider, CIAGovSpider, EPAGovSpider, DNIGovSpider, SBAGovSpider, SECGovSpider
         ]
 
     def run_spiders(self):
