@@ -10,6 +10,7 @@ from spiders.donaldjtrump import DonaldjtrumpSpider
 from spiders.twitter import TwitterSpider
 from spiders.dhs_gov import DHSGovSpider
 from spiders.commerce_gov import CommerceGovSpider
+from spiders.defense_gov import DefenseGovSpider
 
 import io
 import json
@@ -18,7 +19,7 @@ class SpiderRunner():
     def __init__(self):
         self.SPIDER_LIST = [
             WhitehouseStatementsSpider, WhitehouseYoutubeSpider, DonaldjtrumpSpider, TwitterSpider, DHSGovSpider,
-            CommerceGovSpider
+            CommerceGovSpider, DefenseGovSpider
         ]
 
     def run_spiders(self):
