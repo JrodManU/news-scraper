@@ -18,6 +18,6 @@ class TwitterSpider(scrapy.Spider):
                 if "pic.twitter.com/" not in part and "\n" not in part:
                     good_text += part
             item['title'] = good_text
-            item['link'] = 'https://twitter.com' + element.css('::attr(data-permalink-path)').extract_first()
+            item['link'] = 'https://www.twitter.com' + element.css('::attr(data-permalink-path)').extract_first()
             items.append(item)
         return items

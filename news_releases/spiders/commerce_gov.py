@@ -11,6 +11,6 @@ class CommerceGovSpider(scrapy.Spider):
         for element in response.css('article.node-news div div div div div div div h2 a')[:self.settings.attributes['SCRAPE_LIMIT'].value]:
             item = NewsRelease()
             item['title'] = element.css('::text').extract_first()
-            item['link'] = "https://commerce.gov" + element.css('::attr(href)').extract_first()
+            item['link'] = "https://www.commerce.gov" + element.css('::attr(href)').extract_first()
             items.append(item)
         return items
