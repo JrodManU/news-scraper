@@ -38,15 +38,13 @@ import json
 
 class SpiderRunner():
     def __init__(self):
-        self.SPIER_LIST = [
+        self.SPIDER_LIST = [
             WhitehouseStatementsSpider, WhitehouseYoutubeSpider, DonaldjtrumpSpider, TwitterSpider, DHSGovSpider,
             CommerceGovSpider, DefenseGovSpider, EducationGovSpider, USDAGovSpider, EnergyGovSpider, HHSGovNewsSpider,
             HHSGovBlogSpider, StateGovSpider, StateGovBriefingsSpider, HUDGovSpider, JusticeGovSpider, DOLGovSpider,
             DOLGovBlogSpider, TransportationGovSpider, TransportationGovBlogSpider, VAGovSpider, DOIGovSpider,
             TreasuryGovSpider, CIAGovSpider, EPAGovSpider, DNIGovSpider, SBAGovSpider, SECGovSpider
         ]
-
-        self.SPIDER_LIST = [TwitterSpider]
 
     def run_spiders(self):
         try:
