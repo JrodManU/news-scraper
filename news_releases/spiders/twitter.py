@@ -12,10 +12,10 @@ class TwitterSpider(scrapy.Spider):
         items = []
         for element in response.css('ol#stream-items-id li div.tweet')[:self.settings.attributes['SCRAPE_LIMIT'].value]:
             item = NewsRelease()
-            text = element.css('div.content div.js-tweet-text-container ::text').extract()
+            text = element.xpath("div[@class='content']/div[@class='js-tweet-text-container']//text()[not(ancestor-or-self::a[contains(@class, 'u-hidden')])]").extract()
             good_text = ""
             for part in text:
-                if "pic.twitter.com/" not in part and "\n" not in part:
+                if "\n" not in part:
                     good_text += part
             item['title'] = good_text
             item['link'] = 'https://www.twitter.com' + element.css('::attr(data-permalink-path)').extract_first()
