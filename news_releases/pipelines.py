@@ -12,7 +12,7 @@ import pdb
 class JsonPipeline(object):
 
     def open_spider(self, spider):
-        self.file = io.open("news_releases/results/" + spider.name + '.json', 'r+', encoding='utf-8')
+        self.file = io.open("news_releases/results/" + spider.name + '.json', 'w', encoding='utf-8')
         self.items = []
 
     def process_item(self, item, spider):
