@@ -4,10 +4,7 @@ from news_releases.items import NewsRelease
 
 class WhitehouseStatementsSpider(scrapy.Spider):
     name = 'whitehouse_statements'
-    start_urls = ['https://www.whitehouse.gov/briefing-room/statements-and-releases',
-                  'https://www.whitehouse.gov/blog',
-                  'https://www.whitehouse.gov/briefing-room/press-briefings',
-                  'https://www.whitehouse.gov/briefing-room/speeches-and-remarks']
+    start_urls = ['https://www.whitehouse.gov/blog']
 
     def parse(self, response):
         items = []
