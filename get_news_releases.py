@@ -20,6 +20,6 @@ if len(sys.argv) > 1:
     post_data = sys.argv[1].lower() == 'true'
 
 if post_data and len(data_to_post) > 0:
-    reddit = praw.Reddit('bot')
+    reddit = praw.Reddit() #reddit data in theses parentheses
     for link in data_to_post:
         reddit.subreddit("trump").submit(link["title"], url=link["link"])
