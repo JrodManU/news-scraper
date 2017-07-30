@@ -35,7 +35,9 @@ from spiders.sec_gov import SECGovSpider
 
 import io
 import json
-
+import os
+import pdb
+from scrapy.conf import settings
 class SpiderRunner():
     def __init__(self):
         self.SPIDER_LIST = [
@@ -48,8 +50,14 @@ class SpiderRunner():
 
     def run_spiders(self):
         try:
+            settings.overrides.update({'SCRAPE_LIMIT': 3,
+                                       'LOG_LEVEL': 'INFO',
+                                       'USER_AGENT': 'JrodManU (+https://github.com/JrodManU)',
+                                       'ROBOTSTXT_OBEY': True,
+                                       'ITEM_PIPELINES': { 'news_releases.pipelines.JsonPipeline': 300 }
+                                       })
             ## set up the crawler and start to crawl one spider at a time
-            process = CrawlerProcess(get_project_settings())
+            process = CrawlerProcess(settings)
             for spider in self.SPIDER_LIST:
                 process.crawl(spider)
             process.start()
@@ -64,12 +72,12 @@ class SpiderRunner():
             data_file = None
             data[spider.name] = []
             try:
-                data_file = io.open("news_releases/results/" + spider.name + '.json', 'r', encoding='utf-8')
+                data_file = io.open(os.path.join(os.path.dirname(__file__), "results/" + spider.name + '.json'), 'r', encoding='utf-8')
                 line = data_file.readline()
                 if not line == u'':
                     data[spider.name] = json.loads(line)
             except Exception:
-                data_file = io.open("news_releases/results/" + spider.name + '.json', 'w', encoding='utf-8')
+                data_file = io.open(os.path.join(os.path.dirname(__file__), "results/" + spider.name + '.json'), 'w', encoding='utf-8')
             data_file.close()
         return data
 
