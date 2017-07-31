@@ -20,6 +20,10 @@ if len(sys.argv) > 1:
     post_data = sys.argv[1].lower() == 'true'
 
 if post_data and len(data_to_post) > 0:
-    reddit = praw.Reddit() #reddit data in theses parentheses
+    reddit = praw.Reddit(client_id='RHPMCaot0ItkNw',
+                       client_secret='dOTc0gaTTmzgjLnfzFD7u0e60R0',
+                       password='HGT@9iwgkuY#T*7ay28IHTpya;w3y93*Y%&T#',
+                       user_agent='News Release Bot',
+                       username='News_Release_Bot') #reddit data in theses parentheses
     for link in data_to_post:
         reddit.subreddit("trump").submit(link["title"], url=link["link"])
