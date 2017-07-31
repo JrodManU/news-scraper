@@ -1,9 +1,9 @@
 # news-scraper
 
-## pre-reqs
-  python 2.7.12
-  pip install praw
-  pip install scrapy
+#### pre-reqs
+  * python 2.7.12
+  * pip install praw
+  * pip install scrapy
 
 
 Run get_news_releases.py on a schedule to get new data
