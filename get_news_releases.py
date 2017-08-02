@@ -3,10 +3,6 @@ from news_releases.spider_runner import SpiderRunner
 import logging
 import praw
 import sys
-import time
-import random
-
-time.sleep(random.randint(15,100))
 
 spider_runner = SpiderRunner()
 previous_data = spider_runner.get_data()

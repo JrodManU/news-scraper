@@ -32,7 +32,7 @@ from spiders.epa_gov import EPAGovSpider
 from spiders.dni_gov import DNIGovSpider
 from spiders.sba_gov import SBAGovSpider
 from spiders.sec_gov import SECGovSpider
-
+from scrapy.conf import settings
 import io
 import json
 import os
