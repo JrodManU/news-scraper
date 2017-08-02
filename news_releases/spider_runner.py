@@ -36,8 +36,7 @@ from spiders.sec_gov import SECGovSpider
 import io
 import json
 import os
-import pdb
-from scrapy.conf import settings
+
 class SpiderRunner():
     def __init__(self):
         self.SPIDER_LIST = [
