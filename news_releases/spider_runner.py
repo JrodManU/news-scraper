@@ -5,7 +5,7 @@ import traceback
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 from spiders.whitehouse_statements import WhitehouseStatementsSpider
-from spiders.whitehouse_youtube import WhitehouseYoutubeSpider
+from spiders.youtube import YoutubeSpider
 from spiders.donaldjtrump import DonaldjtrumpSpider
 from spiders.twitter import TwitterSpider
 from spiders.dhs_gov import DHSGovSpider
@@ -40,7 +40,7 @@ import os
 class SpiderRunner():
     def __init__(self):
         self.SPIDER_LIST = [
-            WhitehouseStatementsSpider, WhitehouseYoutubeSpider, DonaldjtrumpSpider, TwitterSpider, DHSGovSpider,
+            WhitehouseStatementsSpider, YoutubeSpider, DonaldjtrumpSpider, TwitterSpider, DHSGovSpider,
             CommerceGovSpider, DefenseGovSpider, EducationGovSpider, USDAGovSpider, EnergyGovSpider, HHSGovNewsSpider,
             HHSGovBlogSpider, StateGovSpider, StateGovBriefingsSpider, HUDGovSpider, JusticeGovSpider, DOLGovSpider,
             DOLGovBlogSpider, TransportationGovSpider, TransportationGovBlogSpider, VAGovSpider, DOIGovSpider,
