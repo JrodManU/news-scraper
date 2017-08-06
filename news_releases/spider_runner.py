@@ -36,7 +36,6 @@ from scrapy.conf import settings
 import io
 import json
 import os
-import datetime
 
 class SpiderRunner():
     def __init__(self):
@@ -70,24 +69,15 @@ class SpiderRunner():
         data = {}
         for spider in self.SPIDER_LIST:
             data_file = None
-            error_file = io.open(os.path.join(os.path.dirname(__file__), "errors.txt"), 'a', encoding='utf-8')
             data[spider.name] = []
             try:
                 data_file = io.open(os.path.join(os.path.dirname(__file__), "results/" + spider.name + '.json'), 'r', encoding='utf-8')
                 line = data_file.readline()
-                if not line == u'':
-                    try:
-                        data[spider.name] = json.loads(line)
-                    except Exception:
-                        error_file.write(datetime.datetime.now().time().strftime('[%H: %M]') + u' could not load ' + spider.name + u' json file\n')
-                else:
-                    data[spider.name] = []
-                    error_file.write(datetime.datetime.now().time().strftime('[%H: %M] ') + spider.name + u' json file was empty\n')
+                if line != u'':
+                   data[spider.name] = json.loads(line)
             except Exception:
-                error_file.write(datetime.datetime.now().time().strftime('[%H: %M]') + u' Could not open the results file for ' + spider.name + u'\n')
                 data_file = io.open(os.path.join(os.path.dirname(__file__), "results/" + spider.name + '.json'), 'w', encoding='utf-8')
             data_file.close()
-            error_file.close()
         return data
 
     def get_spider_list(self):
