@@ -17,7 +17,7 @@ for spider in spider_runner.get_spider_list():
             if post['link'] == prev_post['link']:
                 post_it = False    
         if(post_it):
-            data_to_post.append(post['link'])
+            data_to_post.append(post)
 
 
 
