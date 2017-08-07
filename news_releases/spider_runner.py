@@ -32,6 +32,7 @@ from spiders.epa_gov import EPAGovSpider
 from spiders.dni_gov import DNIGovSpider
 from spiders.sba_gov import SBAGovSpider
 from spiders.sec_gov import SECGovSpider
+from spiders.west_wing_reads import WestWingReadsSpider
 from scrapy.conf import settings
 import io
 import json
@@ -44,15 +45,16 @@ class SpiderRunner():
             CommerceGovSpider, DefenseGovSpider, EducationGovSpider, USDAGovSpider, EnergyGovSpider, HHSGovNewsSpider,
             HHSGovBlogSpider, StateGovSpider, StateGovBriefingsSpider, HUDGovSpider, JusticeGovSpider, DOLGovSpider,
             DOLGovBlogSpider, TransportationGovSpider, TransportationGovBlogSpider, VAGovSpider, DOIGovSpider,
-            TreasuryGovSpider, CIAGovSpider, EPAGovSpider, DNIGovSpider, SBAGovSpider, SECGovSpider
+            TreasuryGovSpider, CIAGovSpider, EPAGovSpider, DNIGovSpider, SBAGovSpider, SECGovSpider,
+            WestWingReadsSpider
         ]
 
     def run_spiders(self):
         try:
             settings.overrides.update({'SCRAPE_LIMIT': 3,
-                                       'LOG_LEVEL': 'INFO',
+                                       'LOG_LEVEL': 'DEBUG',
                                        'USER_AGENT': 'JrodManU (+https://github.com/JrodManU)',
-                                       'ROBOTSTXT_OBEY': True,
+                                       'ROBOTSTXT_OBEY': False,
                                        'ITEM_PIPELINES': { 'news_releases.pipelines.JsonPipeline': 300 }
                                        })
             ## set up the crawler and start to crawl one spider at a time
