@@ -8,6 +8,7 @@
 import json
 import io
 import os
+import time
 
 class JsonPipeline(object):
 
@@ -20,7 +21,8 @@ class JsonPipeline(object):
         return item
 
     def close_spider(self, spider):
-        if(len(self.items) != 0):
+        #TODO: this is a really hacky way of fixing youtube, maybe find a better solution
+        if(len(self.items) != 0 and not (spider.name == 'youtube' and len(self.items) != 9)):
             self.file.seek(0,0)
             self.file.truncate()
             self.file.seek(0,0)

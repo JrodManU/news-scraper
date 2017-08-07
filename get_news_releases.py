@@ -11,6 +11,8 @@ new_data = spider_runner.get_data()
 
 data_to_post = []
 for spider in spider_runner.get_spider_list():
+    if(spider.name == "youtube"):
+        continue
     for post in new_data[spider.name]:
         post_it = True
         for prev_post in previous_data[spider.name]:
