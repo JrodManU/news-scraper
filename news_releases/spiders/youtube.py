@@ -2,9 +2,12 @@
 import scrapy
 from news_releases.items import NewsRelease
 
-class WhitehouseYoutubeSpider(scrapy.Spider):
-    name = 'whitehouse_youtube'
-    start_urls = ['https://www.youtube.com/user/whitehouse/videos']
+class YoutubeSpider(scrapy.Spider):
+    name = 'youtube'
+    custom_settings = {'EXPECTED': 9}
+    start_urls = ['https://www.youtube.com/user/whitehouse/videos',
+                  'https://www.youtube.com/user/statevideo/videos',
+                  'https://www.youtube.com/user/DODvClips/videos']
 
     def parse(self, response):
         items = []

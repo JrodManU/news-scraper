@@ -11,9 +11,17 @@ new_data = spider_runner.get_data()
 
 data_to_post = []
 for spider in spider_runner.get_spider_list():
-    for link in new_data[spider.name]:
-        if link not in previous_data[spider.name]:
-            data_to_post.append(link)
+    if(spider.name == "youtube"):
+        continue
+    for post in new_data[spider.name]:
+        post_it = True
+        for prev_post in previous_data[spider.name]:
+            if post['link'] == prev_post['link']:
+                post_it = False    
+        if(post_it):
+            data_to_post.append(post)
+
+
 
 post_data = True
 if len(sys.argv) > 1:

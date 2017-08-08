@@ -5,7 +5,7 @@ import traceback
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 from spiders.whitehouse_statements import WhitehouseStatementsSpider
-from spiders.whitehouse_youtube import WhitehouseYoutubeSpider
+from spiders.youtube import YoutubeSpider
 from spiders.donaldjtrump import DonaldjtrumpSpider
 from spiders.twitter import TwitterSpider
 from spiders.dhs_gov import DHSGovSpider
@@ -32,28 +32,29 @@ from spiders.epa_gov import EPAGovSpider
 from spiders.dni_gov import DNIGovSpider
 from spiders.sba_gov import SBAGovSpider
 from spiders.sec_gov import SECGovSpider
-
+from spiders.west_wing_reads import WestWingReadsSpider
+from scrapy.conf import settings
 import io
 import json
 import os
-import pdb
-from scrapy.conf import settings
+
 class SpiderRunner():
     def __init__(self):
         self.SPIDER_LIST = [
-            WhitehouseStatementsSpider, WhitehouseYoutubeSpider, DonaldjtrumpSpider, TwitterSpider, DHSGovSpider,
+            WhitehouseStatementsSpider, YoutubeSpider, DonaldjtrumpSpider, TwitterSpider, DHSGovSpider,
             CommerceGovSpider, DefenseGovSpider, EducationGovSpider, USDAGovSpider, EnergyGovSpider, HHSGovNewsSpider,
             HHSGovBlogSpider, StateGovSpider, StateGovBriefingsSpider, HUDGovSpider, JusticeGovSpider, DOLGovSpider,
             DOLGovBlogSpider, TransportationGovSpider, TransportationGovBlogSpider, VAGovSpider, DOIGovSpider,
-            TreasuryGovSpider, CIAGovSpider, EPAGovSpider, DNIGovSpider, SBAGovSpider, SECGovSpider
+            TreasuryGovSpider, CIAGovSpider, EPAGovSpider, DNIGovSpider, SBAGovSpider, SECGovSpider,
+            WestWingReadsSpider
         ]
 
     def run_spiders(self):
         try:
             settings.overrides.update({'SCRAPE_LIMIT': 3,
-                                       'LOG_LEVEL': 'INFO',
+                                       'LOG_LEVEL': 'DEBUG',
                                        'USER_AGENT': 'JrodManU (+https://github.com/JrodManU)',
-                                       'ROBOTSTXT_OBEY': True,
+                                       'ROBOTSTXT_OBEY': False,
                                        'ITEM_PIPELINES': { 'news_releases.pipelines.JsonPipeline': 300 }
                                        })
             ## set up the crawler and start to crawl one spider at a time
@@ -74,8 +75,8 @@ class SpiderRunner():
             try:
                 data_file = io.open(os.path.join(os.path.dirname(__file__), "results/" + spider.name + '.json'), 'r', encoding='utf-8')
                 line = data_file.readline()
-                if not line == u'':
-                    data[spider.name] = json.loads(line)
+                if line != u'':
+                   data[spider.name] = json.loads(line)
             except Exception:
                 data_file = io.open(os.path.join(os.path.dirname(__file__), "results/" + spider.name + '.json'), 'w', encoding='utf-8')
             data_file.close()
