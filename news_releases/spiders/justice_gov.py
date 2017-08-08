@@ -4,6 +4,7 @@ from news_releases.items import NewsRelease
 
 class JusticeGovSpider(scrapy.Spider):
     name = 'justice_gov'
+    custom_settings = {'EXPECTED': 3}
     start_urls = ['https://www.justice.gov/news']    
 
     def parse(self, response):

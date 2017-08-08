@@ -4,6 +4,7 @@ from news_releases.items import NewsRelease
 
 class TransportationGovSpider(scrapy.Spider):
     name = 'transportation_gov'
+    custom_settings = {'EXPECTED': 3}
     start_urls = ['https://www.transportation.gov/press-releases']
 
     def parse(self, response):

@@ -15,4 +15,4 @@ class DOIGovSpider(scrapy.Spider):
             item['title'] = element.css('::text').extract_first()
             item['link'] = "https://www.doi.gov" + element.css('::attr(href)').extract_first()
             items.append(item)
-        return items
+        return []
