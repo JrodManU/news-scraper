@@ -4,6 +4,7 @@ from news_releases.items import NewsRelease
 
 class DOIGovSpider(scrapy.Spider):
     name = 'doi_gov'
+    custom_settings = {'EXPECTED': 3}
     start_urls = ['https://www.doi.gov/news']
 
     def parse(self, response):

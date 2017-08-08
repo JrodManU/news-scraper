@@ -9,7 +9,7 @@ import json
 import io
 import os
 import time
-
+import pdb
 class JsonPipeline(object):
 
     def open_spider(self, spider):
@@ -21,8 +21,7 @@ class JsonPipeline(object):
         return item
 
     def close_spider(self, spider):
-        #TODO: this is a really hacky way of fixing youtube, maybe find a better solution
-        if(len(self.items) != 0 and not (spider.name == 'youtube' and len(self.items) != 9)):
+        if(len(self.items) != 0 and (spider.custom_settings is None or 'EXPECTED' not in spider.custom_settings or spider.custom_settings['EXPECTED'] == len(self.items))):
             self.file.seek(0,0)
             self.file.truncate()
             self.file.seek(0,0)

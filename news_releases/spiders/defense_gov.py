@@ -5,6 +5,7 @@ import pdb
 
 class DefenseGovSpider(scrapy.Spider):
     name = 'defense_gov'
+    custom_settings = {'EXPECTED': 3}
     start_urls = ['https://www.defense.gov/News/Archive/']
 
     def parse(self, response):
