@@ -1,2 +1,3 @@
 crontab.log
 *.pyc
+praw.ini
