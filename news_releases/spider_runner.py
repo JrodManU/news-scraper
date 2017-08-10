@@ -55,7 +55,10 @@ class SpiderRunner():
                                        'LOG_LEVEL': 'DEBUG',
                                        'USER_AGENT': 'JrodManU (+https://github.com/JrodManU)',
                                        'ROBOTSTXT_OBEY': False,
-                                       'ITEM_PIPELINES': { 'news_releases.pipelines.JsonPipeline': 300 }
+                                       'ITEM_PIPELINES': { 'news_releases.pipelines.JsonPipeline': 300 },
+                                       'DOWNLOAD_TIMEOUT': 12,
+                                       'DNS_TIMEOUT': 12,
+                                       'RETRY_ENABLED': False
                                        })
             ## set up the crawler and start to crawl one spider at a time
             process = CrawlerProcess(settings)

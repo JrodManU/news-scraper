@@ -9,7 +9,7 @@ import json
 import io
 import os
 import time
-import pdb
+
 class JsonPipeline(object):
 
     def open_spider(self, spider):

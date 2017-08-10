@@ -4,6 +4,7 @@ from news_releases.items import NewsRelease
 import pdb
 class TreasuryGovSpider(scrapy.Spider):
     name = 'treasury_gov'
+    custom_settings = {'EXPECTED': 6}
     start_urls = ['https://www.treasury.gov/press-center/press-releases/Pages/default.aspx',
                   'https://www.treasury.gov/press-center/news/Pages/default.aspx']
 
