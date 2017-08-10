@@ -4,6 +4,7 @@ from news_releases.items import NewsRelease
 
 class StateGovSpider(scrapy.Spider):
     name = 'state_gov'
+    custom_settings = {'EXPECTED': 6}
     start_urls = ['https://www.state.gov/r/pa/prs/sb/index.htm',
                   'https://www.state.gov/r/pa/ei/opeds/index.htm']
 

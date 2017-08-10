@@ -4,6 +4,7 @@ from news_releases.items import NewsRelease
 
 class HUDGovSpider(scrapy.Spider):
     name = 'hud_gov'
+    custom_settings = {'EXPECTED': 6}
     start_urls = ['https://portal.hud.gov/hudportal/HUD?src=/press/speeches_remarks_statements',
                   'https://portal.hud.gov/hudportal/HUD?src=/press/press_releases_media_advisories']
 

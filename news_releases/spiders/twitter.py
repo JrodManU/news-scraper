@@ -4,6 +4,7 @@ from news_releases.items import NewsRelease
 
 class TwitterSpider(scrapy.Spider):
     name = 'twitter'
+    custom_settings = {'EXPECTED':9}
     start_urls = ['https://twitter.com/potus',
                   'https://twitter.com/realDonaldTrump',
                   'https://twitter.com/WhiteHouse']
